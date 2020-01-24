@@ -33,12 +33,12 @@ class ApiController extends Controller
 	}
 
 	public function store(UserCreateRequest $request)
-	{
+	{ 
 		$this->setAdmin($request);
 
 		$user = $this->userRepository->store($request->all());
 
-		return redirect('user')->withOk("L'utilisateur " . $user->name . " a été créé.");
+		return $user ;
 	}
 
 	public function show($id)
@@ -56,20 +56,19 @@ class ApiController extends Controller
 	}
 
 	public function update(UserUpdateRequest $request, $id)
-	{
+	{	
 		$this->setAdmin($request);
-
 		$this->userRepository->update($id, $request->all());
+		$user = $this->userRepository->getById($id);
 		
-		return redirect('user')->withOk("L'utilisateur " . $request->input('name') . " a été modifié.");
+		return $user;
 	}
 
 	public function destroy($id)
 	{
 		$user = $this->userRepository->getById($id);
 		$this->userRepository->destroy($id);
-		return redirect('user')->withOk("L'utilisateur " . $user->name . " a été supprimé.");
-        //return redirect()->back();
+        return $user;
 	}
 
 	private function setAdmin($request)

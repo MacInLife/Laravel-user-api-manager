@@ -13,14 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 //Affiche tous les users
-Route::resource('/users', 'ApiController');
-
-//Route api pour le update et crete et delete via Postman
-Route::middleware('api')->post('/user-add', 'ApiController@create');
-Route::middleware('api')->post('/user-update/{id}', 'ApiController@update');
-Route::middleware('api')->post('/user-destroy/{id}', 'ApiController@destroy');
+Route::apiResource('/users', 'ApiController');

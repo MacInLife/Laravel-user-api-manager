@@ -22,9 +22,9 @@
 // Route::get('3', function() { return 'Je suis la page 3 !'; });
 
 //Comportement identifque au page 1 à 3
-Route::get('{n}', function($n) { 
-    return response('Je suis la page ' . $n . ' !', 200);
-})->where('n', '[1-3]');
+// Route::get('{n}', function($n) { 
+//     return response('Je suis la page ' . $n . ' !', 200);
+// })->where('n', '[1-3]');
 
 //Route qui accepte n'importe qu'elle URL
 // Route::get('{n}', function($n) {
