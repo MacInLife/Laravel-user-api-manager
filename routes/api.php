@@ -19,8 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Affiche tous les users
 Route::resource('/users', 'ApiController');
-//Affiche un user
-Route::resource('/user', 'ApiController');
 
 //Route api pour le update et crete et delete via Postman
 Route::middleware('api')->post('/user-add', 'ApiController@create');

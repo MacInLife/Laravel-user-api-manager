@@ -59,23 +59,23 @@ Route::get('{n}', function($n) {
 // })->where('n', '[0-9]+');
 
 //Accès page index avec espace de nom "Home"
-Route::get('/', ['uses' => 'WelcomeController@index', 'as' => 'home']);
+// Route::get('/', ['uses' => 'WelcomeController@index', 'as' => 'home']);
 
-//Accès a la page article fixe et n numéro variable
-Route::get('article/{n}', 'ArticleController@show')->where('n', '[0-9]+');
+// //Accès a la page article fixe et n numéro variable
+// Route::get('article/{n}', 'ArticleController@show')->where('n', '[0-9]+');
 
-Route::get('users', 'UsersController@getInfos');
-Route::post('users', 'UsersController@postInfos');
+// Route::get('users', 'UsersController@getInfos');
+// Route::post('users', 'UsersController@postInfos');
 
-Route::get('contact', 'ContactController@getForm');
-Route::post('contact', 'ContactController@postForm');
+// Route::get('contact', 'ContactController@getForm');
+// Route::post('contact', 'ContactController@postForm');
 
 
-Route::get('photo', 'PhotoController@getForm');
-Route::post('photo', 'PhotoController@postForm');
+// Route::get('photo', 'PhotoController@getForm');
+// Route::post('photo', 'PhotoController@postForm');
 
-Route::get('email', 'EmailController@getForm');
-Route::post('email', ['uses' => 'EmailController@postForm', 'as' => 'storeEmail']);
+// Route::get('email', 'EmailController@getForm');
+// Route::post('email', ['uses' => 'EmailController@postForm', 'as' => 'storeEmail']);
 
 //Accès page index
 Route::get('users' , 'UserController@index');
