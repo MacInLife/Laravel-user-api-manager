@@ -24,13 +24,6 @@
                     {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' =>
                     'Confirmation mot de passe']) !!}
                 </div>
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label>
-                            {!! Form::checkbox('admin', 1, null) !!} Administrateur
-                        </label>
-                    </div>
-                </div>
                 {!! Form::submit('Envoyer', ['class' => 'btn btn-primary pull-right']) !!}
                 {!! Form::close() !!}
             </div>

@@ -5,6 +5,7 @@ use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\User;
 
 class ApiController extends Controller
@@ -34,7 +35,18 @@ class ApiController extends Controller
 
 	public function store(UserCreateRequest $request)
 	{ 
-		$this->setAdmin($request);
+		
+		$validator = Validator::make($request->all(), [
+			'name' => ['required','max:255','unique:users'],
+			'email' => ['required','email','unique:users'],
+			'password' => ['required','confirmed','min:6'],
+			'password_confirmation' => ['required']
+		]);
+		if ($validator->fails()) {
+            return redirect('post/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
 
 		$user = $this->userRepository->store($request->all());
 
@@ -57,7 +69,18 @@ class ApiController extends Controller
 
 	public function update(UserUpdateRequest $request, $id)
 	{	
-		$this->setAdmin($request);
+	
+		$validator = Validator::make($request->all(), [
+			'name' => ['required','max:255','unique:users'],
+			'email' => ['required','email','unique:users'],
+			'password' => ['required','confirmed','min:6'],
+			'password_confirmation' => ['required']
+		]);
+		if ($validator->fails()) {
+            return redirect('post/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
 		$this->userRepository->update($id, $request->all());
 		$user = $this->userRepository->getById($id);
 		
@@ -71,11 +94,5 @@ class ApiController extends Controller
         return $user;
 	}
 
-	private function setAdmin($request)
-	{
-		if(!$request->has('admin'))
-		{
-			$request->merge(['admin' => 0]);
-		}		
-	}
+
 }

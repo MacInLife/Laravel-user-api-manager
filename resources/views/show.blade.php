@@ -8,9 +8,6 @@
         <div class="panel-body">
             <p>Nom : {{ $user->name }}</p>
             <p>Email : {{ $user->email }}</p>
-            @if($user->admin == 1)
-            Administrateur
-            @endif
         </div>
     </div>
     <a href="javascript:history.back()" class="btn btn-primary">

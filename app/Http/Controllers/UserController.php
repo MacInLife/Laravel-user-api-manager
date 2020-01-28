@@ -32,7 +32,6 @@ class UserController extends Controller
 
 	public function store(UserCreateRequest $request)
 	{
-		$this->setAdmin($request);
 
 		$user = $this->userRepository->store($request->all());
 
@@ -55,7 +54,7 @@ class UserController extends Controller
 
 	public function update(UserUpdateRequest $request, $id)
 	{
-		$this->setAdmin($request);
+		
 
 		$this->userRepository->update($id, $request->all());
 		
@@ -70,11 +69,5 @@ class UserController extends Controller
         //return redirect()->back();
 	}
 
-	private function setAdmin($request)
-	{
-		if(!$request->has('admin'))
-		{
-			$request->merge(['admin' => 0]);
-		}		
-	}
+
 }
