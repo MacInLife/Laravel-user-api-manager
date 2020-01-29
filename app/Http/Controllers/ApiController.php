@@ -37,19 +37,19 @@ class ApiController extends Controller
 	{ 
 		
 		$validator = Validator::make($request->all(), [
-			'name' => ['required','max:255','unique:users'],
+			'name' => ['required','max:255'],
 			'email' => ['required','email','unique:users'],
 			'password' => ['required','confirmed','min:6'],
 			'password_confirmation' => ['required']
 		]);
+	
 		if ($validator->fails()) {
-            return redirect('post/create')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
-
+			 Session::flash('error', $validator->messages()->first());
+			 return redirect()->back()->withInput();
+		}
+		$validated = $request->validated();
 		$user = $this->userRepository->store($request->all());
-
+		
 		return $user ;
 	}
 
@@ -76,12 +76,13 @@ class ApiController extends Controller
 			'password' => ['required','confirmed','min:6'],
 			'password_confirmation' => ['required']
 		]);
+	
 		if ($validator->fails()) {
-            return redirect('post/create')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
+			 Session::flash('error', $validator->messages()->first());
+			 return redirect()->back()->withInput();
+		}
 		$this->userRepository->update($id, $request->all());
+		$validated = $request->validated();
 		$user = $this->userRepository->getById($id);
 		
 		return $user;

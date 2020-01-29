@@ -19,5 +19,13 @@ class UserCreateRequest extends FormRequest
 			'password' => 'required|confirmed|min:6'
 		];
 	}
+	public function messages()
+    {
+        return [
+            'email.required' => 'Email is required!',
+            'name.required' => 'Name is required!',
+            'password.required' => 'Password is required!'
+        ];
+	}
 
 }
