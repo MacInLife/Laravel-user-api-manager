@@ -7,6 +7,8 @@ use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\User;
+use Illuminate\Support\Facades\Session;
+
 
 class ApiController extends Controller
 {
@@ -42,7 +44,6 @@ class ApiController extends Controller
 			'password' => ['required','confirmed','min:6'],
 			'password_confirmation' => ['required']
 		]);
-	
 		if ($validator->fails()) {
 			 Session::flash('error', $validator->messages()->first());
 			 return redirect()->back()->withInput();
