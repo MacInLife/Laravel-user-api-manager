@@ -24,7 +24,7 @@
         "css-what": "^5.0.1",
         "joi": "^17.4.0",
         "kind-of": "^6.0.3",
-        "minimist": "^1.2.5",
+        "minimist": "^1.2.6",
         "normalize-url": "^4.5.1",
         "postcss": "^8.2.15",
         "postcss-cli": "^8.3.1",
