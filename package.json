@@ -22,7 +22,7 @@
         "@sideway/address": "^4.1.2",
         "acorn": "^7.4.1",
         "css-what": "^5.0.1",
-        "joi": "^17.4.0",
+        "joi": "^18.2.1",
         "kind-of": "^6.0.3",
         "minimist": "^1.2.6",
         "normalize-url": "^4.5.1",
